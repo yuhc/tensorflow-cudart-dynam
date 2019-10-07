@@ -50,17 +50,17 @@ cuda_header_library(
     ],
 )
 
-cc_library(
-    name = "cudart_static",
-    srcs = ["cuda/lib/%{cudart_static_lib}"],
-    linkopts = select({
-        ":freebsd": [],
-        "//conditions:default": ["-ldl"],
-    }) + [
-        "-lpthread",
-        %{cudart_static_linkopt}
-    ],
-)
+#cc_library(
+#    name = "cudart_static",
+#    srcs = ["cuda/lib/%{cudart_static_lib}"],
+#    linkopts = select({
+#        ":freebsd": [],
+#        "//conditions:default": ["-ldl"],
+#    }) + [
+#        "-lpthread",
+#        %{cudart_static_linkopt}
+#    ],
+#)
 
 cc_library(
     name = "cuda_driver",

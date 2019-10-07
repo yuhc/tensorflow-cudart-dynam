@@ -1741,7 +1741,8 @@ def tf_custom_op_library(name, srcs = [], gpu_srcs = [], deps = [], linkopts = [
     cuda_deps = [
         clean_dep("//tensorflow/core:stream_executor_headers_lib"),
         "@local_config_cuda//cuda:cuda_headers",
-        "@local_config_cuda//cuda:cudart_static",
+        "@local_config_cuda//cuda:cudart",
+#        "@local_config_cuda//cuda:cudart_static",
     ]
     rocm_deps = [
         clean_dep("//tensorflow/core:stream_executor_headers_lib"),

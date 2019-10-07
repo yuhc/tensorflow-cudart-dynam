@@ -101,6 +101,7 @@ cc_library(
     deps = [
         ":device",
         ":include_hdrs",
-        "@local_config_cuda//cuda:cudart_static",
+#        "@local_config_cuda//cuda:cudart_static",
+        "@local_config_cuda//cuda:cudart",
     ],
 )

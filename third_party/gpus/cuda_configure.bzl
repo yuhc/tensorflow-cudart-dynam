@@ -618,14 +618,14 @@ def _find_libs(repository_ctx, cuda_config):
             cuda_config.config["cuda_library_dir"],
             cuda_config.cuda_version,
         ),
-        "cudart_static": _find_cuda_lib(
-            "cudart_static",
-            repository_ctx,
-            cpu_value,
-            cuda_config.config["cuda_library_dir"],
-            cuda_config.cuda_version,
-            static = True,
-        ),
+#        "cudart_static": _find_cuda_lib(
+#            "cudart_static",
+#            repository_ctx,
+#            cpu_value,
+#            cuda_config.config["cuda_library_dir"],
+#            cuda_config.cuda_version,
+#            static = True,
+#        ),
         "cublas": _find_cuda_lib(
             "cublas",
             repository_ctx,
@@ -797,11 +797,11 @@ def _create_dummy_repository(repository_ctx):
         "cuda:BUILD",
         {
             "%{cuda_driver_lib}": lib_name("cuda", cpu_value),
-            "%{cudart_static_lib}": lib_name(
-                "cudart_static",
-                cpu_value,
-                static = True,
-            ),
+#            "%{cudart_static_lib}": lib_name(
+#                "cudart_static",
+#                cpu_value,
+#                static = True,
+#            ),
             "%{cudart_static_linkopt}": _cudart_static_linkopt(cpu_value),
             "%{cudart_lib}": lib_name("cudart", cpu_value),
             "%{cublas_lib}": lib_name("cublas", cpu_value),
@@ -827,9 +827,9 @@ filegroup(name="cudnn-include")
     repository_ctx.file("cuda/cuda/extras/CUPTI/include/cupti.h")
     repository_ctx.file("cuda/cuda/lib/%s" % lib_name("cuda", cpu_value))
     repository_ctx.file("cuda/cuda/lib/%s" % lib_name("cudart", cpu_value))
-    repository_ctx.file(
-        "cuda/cuda/lib/%s" % lib_name("cudart_static", cpu_value),
-    )
+#    repository_ctx.file(
+#        "cuda/cuda/lib/%s" % lib_name("cudart_static", cpu_value),
+#    )
     repository_ctx.file("cuda/cuda/lib/%s" % lib_name("cublas", cpu_value))
     repository_ctx.file("cuda/cuda/lib/%s" % lib_name("cusolver", cpu_value))
     repository_ctx.file("cuda/cuda/lib/%s" % lib_name("cudnn", cpu_value))
@@ -1074,7 +1074,7 @@ def _create_local_cuda_repository(repository_ctx):
         "cuda:BUILD.windows" if _is_windows(repository_ctx) else "cuda:BUILD",
         {
             "%{cuda_driver_lib}": cuda_libs["cuda"].basename,
-            "%{cudart_static_lib}": cuda_libs["cudart_static"].basename,
+#            "%{cudart_static_lib}": cuda_libs["cudart_static"].basename,
             "%{cudart_static_linkopt}": _cudart_static_linkopt(cuda_config.cpu_value),
             "%{cudart_lib}": cuda_libs["cudart"].basename,
             "%{cublas_lib}": cuda_libs["cublas"].basename,

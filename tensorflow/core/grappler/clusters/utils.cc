@@ -82,6 +82,7 @@ DeviceProperties GetLocalGPUInfo(PlatformGpuId platform_gpu_id) {
   cudaDeviceProp properties;
   cudaError_t error =
       cudaGetDeviceProperties(&properties, platform_gpu_id.value());
+
   if (error != cudaSuccess) {
     device.set_type("UNKNOWN");
     LOG(ERROR) << "Failed to get device properties, error code: " << error;
